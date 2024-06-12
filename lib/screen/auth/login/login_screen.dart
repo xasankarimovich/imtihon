@@ -53,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                       }
                     },
-                    child: value.isLoading? const  CupertinoActivityIndicator(): const Text('Login'),
+                    child:  const  CupertinoActivityIndicator(),
                   );
                 },
               ),
@@ -66,7 +66,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   );
                 },
-                child: const Text('Register'),
+                child: const Text('Login Screen'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const RegisterScreen(),
+                    ),
+                  );
+                },
+                child: const Text('Login Screen'),
               ),
             ],
           ),
