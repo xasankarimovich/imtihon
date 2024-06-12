@@ -7,6 +7,9 @@ import 'package:imtihon/screen/auth/widget/input_item.dart';
 import 'package:imtihon/utils/constants/app_constants.dart';
 import 'package:imtihon/utils/extension/extension.dart';
 import 'package:imtihon/view_model/auth_view_model.dart';
+import 'package:imtihon/view_model/auth_view_model.dart';
+import 'package:imtihon/view_model/auth_view_model.dart';
+import 'package:imtihon/view_model/auth_view_model.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -32,17 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             children: [
               50.boxH(),
-              InputText(
-                controller: _emailController,
-                title: "Email",
-                regExp: AppConstants.emailRegExp,
-              ),
-              10.boxH(),
-              InputText(
-                controller: _passwordController,
-                title: "Password",
-                regExp: AppConstants.passwordRegExp,
-              ),
+              ElevatedButton(onPressed: (){}, child: Text(';dsafasf')),
               Consumer<AuthViewModel>(
                 builder: (BuildContext context, AuthViewModel value, Widget? child) {
                   return ElevatedButton(
