@@ -32,17 +32,6 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             children: [
               50.boxH(),
-              InputText(
-                controller: _emailController,
-                title: "Email",
-                regExp: AppConstants.emailRegExp,
-              ),
-              10.boxH(),
-              InputText(
-                controller: _passwordController,
-                title: "Password",
-                regExp: AppConstants.passwordRegExp,
-              ),
               Consumer<AuthViewModel>(
                 builder: (BuildContext context, AuthViewModel value, Widget? child) {
                   return ElevatedButton(
