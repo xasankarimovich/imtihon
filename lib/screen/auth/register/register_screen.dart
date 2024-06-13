@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:imtihon/screen/auth/widget/input_item.dart';
+import 'package:imtihon/utils/color/app_color.dart';
 import 'package:imtihon/utils/constants/app_constants.dart';
 import 'package:imtihon/utils/extension/extension.dart';
+import 'package:imtihon/utils/style/app_text_style.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -35,6 +37,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               InputText(
                 controller: _nameController,
                 title: "Email",
+
                 regExp: AppConstants.emailRegExp,
               ),
               10.boxH(),
@@ -45,7 +48,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               ElevatedButton(
                 onPressed: () {},
-                child: const Text('Login'),
+                child:  Text('Login',style: AppTextStyle.semiBold,),
+
               ),
               ElevatedButton(
                 onPressed: () {

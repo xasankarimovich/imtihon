@@ -31,6 +31,6 @@ class AppTextStyle{
   static TextStyle semiBold = TextStyle(
       fontSize: 16.w,
       fontWeight: FontWeight.w700,
-      color: AppColors.c000000
+
   );
 }

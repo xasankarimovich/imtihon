@@ -19,6 +19,10 @@ dependencies:
   provider: ^6.1.2
   http: ^1.2.1
   shared_preferences: ^2.2.3
+  zoom_tap_animation: ^1.1.0
+  convex_bottom_bar: ^3.2.0
+  flutter_svg: ^2.0.10+1
+
 
 dev_dependencies:
   flutter_test:
@@ -33,9 +37,11 @@ flutter:
 
   uses-material-design: true
 
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/
+    - assets/svg_icons/
+
+
 
 
   # fonts:

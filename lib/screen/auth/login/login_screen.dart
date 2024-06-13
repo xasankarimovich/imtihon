@@ -4,6 +4,7 @@ import 'package:imtihon/data/model/user/user_model.dart';
 import 'package:imtihon/data/repository/auth_repository/auth_repository.dart';
 import 'package:imtihon/screen/auth/register/register_screen.dart';
 import 'package:imtihon/screen/auth/widget/input_item.dart';
+import 'package:imtihon/screen/widgets/Global_elevated_button/global_elevated_button.dart';
 import 'package:imtihon/utils/constants/app_constants.dart';
 import 'package:imtihon/utils/extension/extension.dart';
 import 'package:imtihon/view_model/auth_view_model.dart';
@@ -23,7 +24,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint("_________________________________________________ build run");
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -45,7 +45,8 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Consumer<AuthViewModel>(
                 builder: (BuildContext context, AuthViewModel value, Widget? child) {
-                  return ElevatedButton(
+                  return GlobalZoomTapButton(
+
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         UserModel userModel = UserModel(
