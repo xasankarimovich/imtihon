@@ -22,45 +22,117 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.w),
+        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+        // Use constant value
         child: Form(
           key: _formKey,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              50.boxH(),
+              const Text(
+                'Create an account',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
               InputText(
-                controller: _emailController,
+                controller: _nameController,
                 title: "Name",
                 regExp: AppConstants.nameRegExp,
               ),
-              10.boxH(),
+              const SizedBox(height: 10),
               InputText(
-                controller: _nameController,
+                controller: _emailController,
                 title: "Email",
-
                 regExp: AppConstants.emailRegExp,
               ),
-              10.boxH(),
+              const SizedBox(height: 10),
               InputText(
                 controller: _passwordController,
                 title: "Password",
                 regExp: AppConstants.passwordRegExp,
+                isPassword: true,
               ),
-              ElevatedButton(
-                onPressed: () {},
-                child:  Text('Login',style: AppTextStyle.semiBold,),
-
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () {
+                    // Add forgot password logic
+                  },
+                  child: const Text('Forgot Password?'),
+                ),
               ),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const RegisterScreen(),
-                    ),
-                  );
+                  if (_formKey.currentState!.validate()) {
+                    // Add sign up logic here
+                  }
                 },
-                child: const Text('Register'),
+                child: const Text('Sign Up'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                  textStyle: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                children: [
+                  Expanded(
+                    child: Divider(
+                      thickness: 1,
+                      color: Colors.grey.shade400,
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Text('Or'),
+                  ),
+                  Expanded(
+                    child: Divider(
+                      thickness: 1,
+                      color: Colors.grey.shade400,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      // Add sign in with Google logic
+                    },
+                    icon: const Icon(Icons.g_mobiledata, size: 40),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      // Add sign in with Apple logic
+                    },
+                    icon: const Icon(Icons.apple, size: 40),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              GestureDetector(
+                onTap: () {
+                  // Navigate to login screen
+                  Navigator.pop(context);
+                },
+                child: const Text.rich(
+                  TextSpan(
+                    text: "By sign in, accept to terms of service, ",
+                    children: [
+                      TextSpan(
+                        text: 'Guidelines and have read Privacy Policy.',
+                        style: TextStyle(color: Colors.blue),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
@@ -68,6 +140,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ),
     );
   }
+
   @override
   void dispose() {
     _nameController.dispose();

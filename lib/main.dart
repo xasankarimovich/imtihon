@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
     height = context.getHeight();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: LoginScreen(),
     );
   }
 }

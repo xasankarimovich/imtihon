@@ -6,15 +6,26 @@ class TabBoxScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  ConvexAppBar(
-      items: const [
-        TabItem(icon: Icons.home, title: 'Home'),
-      TabItem(icon: Icons.map, title: 'Discovery'),
-      TabItem(icon: Icons.add, title: 'Add'),
-      TabItem(icon: Icons.message, title: 'Message'),
-      TabItem(icon: Icons.people, title: 'Profile'),
-      ],
-      onTap: (int i) => print('click index=$i'),
+    return  Scaffold(
+
+      body: Column(
+        children: [
+
+        ],
+      ),
+     bottomNavigationBar:  ConvexAppBar(
+       curveSize: 100,
+        // curve: Curve,
+
+        items: const [
+          TabItem(icon: Icons.home, title: 'Home'),
+          TabItem(icon: Icons.message, title: 'Message'),
+          TabItem(icon: Icons.map, title: 'Discovery'),
+
+          TabItem(icon: Icons.people, title: 'Profile'),
+        ],
+        // onTap: (int i) => print('click index=$i'),
+      ),
     );
   }
 }
