@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imtihon/utils/color/app_color.dart';
+import 'package:imtihon/utils/extension/extension.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class GlobalZoomTapButton extends StatelessWidget {
@@ -10,10 +11,10 @@ class GlobalZoomTapButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ZoomTapAnimation(
       child: SizedBox(
-        height: 50,
+        height: 50.h,
         width: double.infinity,
         child: Card(
-          child: Center(child: Text('Login')),
+          child: Center(),
           color: AppColors.c3287FF,
         ),
       ),

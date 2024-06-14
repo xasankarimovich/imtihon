@@ -13,6 +13,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(
           create: (_) => AuthViewModel(),
+
         ),
       ],
       child: const MyApp(),

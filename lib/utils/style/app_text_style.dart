@@ -29,8 +29,9 @@ class AppTextStyle{
   );
   //semi bold
   static TextStyle semiBold = TextStyle(
-      fontSize: 16.w,
+      fontSize: 24.w,
       fontWeight: FontWeight.w700,
+      color: AppColors.c000000,
 
   );
 }
