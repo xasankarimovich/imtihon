@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imtihon/utils/image_path/images_path.dart';
 
-import '../../main.dart';
 import '../auth/login/login_screen.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

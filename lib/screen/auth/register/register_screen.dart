@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:imtihon/screen/auth/widget/input_item.dart';
-import 'package:imtihon/utils/color/app_color.dart';
 import 'package:imtihon/utils/constants/app_constants.dart';
 import 'package:imtihon/utils/extension/extension.dart';
 import 'package:imtihon/utils/style/app_text_style.dart';
