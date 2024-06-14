@@ -1,191 +1,80 @@
 import 'package:flutter/material.dart';
+import 'package:imtihon/screen/homePage/home_screen.dart';
+import 'package:imtihon/view_model/favorites_view_model.dart';
+import 'package:provider/provider.dart';
 
-class FavoritesScreen extends StatefulWidget {
-  const FavoritesScreen({super.key});
-
-  @override
-  _FavoritesScreenState createState() => _FavoritesScreenState();
-}
-
-class _FavoritesScreenState extends State<FavoritesScreen> {
-  bool isListView = true;
-  List<String> sortingOptions = [
-    "Lowest Speed",
-    "Highest Speed",
-    "Lowest Price",
-    "Highest Price"
-  ];
-  String selectedSortOption = "Lowest Speed";
-
-  void _toggleView() {
-    setState(() {
-      isListView = !isListView;
-    });
-  }
-
-  void _sortBy(String option) {
-    setState(() {
-      selectedSortOption = option;
-      // Add your sorting logic here
-    });
-  }
-
-  void _showSortOptions(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      builder: (context) {
-        return ListView(
-          children: sortingOptions.map((option) {
-            return ListTile(
-              title: Text(option),
-              onTap: () {
-                _sortBy(option);
-                Navigator.pop(context);
-              },
-            );
-          }).toList(),
-        );
-      },
-    );
-  }
-
-  void _showMoreOptions(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      builder: (context) {
-        return ListView(
-          children: [
-            ListTile(
-              leading: const Icon(Icons.edit),
-              title: const Text('Edit'),
-              onTap: () {
-                // Edit action
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.share),
-              title: const Text('Share'),
-              onTap: () {
-                // Share action
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
+class FavoritesPage extends StatelessWidget {
+  const FavoritesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Favorites"),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.sort),
-            onPressed: () {
-              _showSortOptions(context);
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.more_vert),
-            onPressed: () {
-              _showMoreOptions(context);
-            },
-          ),
-        ],
+        automaticallyImplyLeading: false,
+        title: const Text('Favorites'),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: isListView ? _buildListView() : _buildGridView(),
-          ),
-        ],
+      body: Card(
+        child: Consumer<FavoritesViewModel>(
+          builder: (context, favoritesViewModel, child) {
+            final favorites = favoritesViewModel.favorites;
+            return ListView.builder(
+              itemCount: favorites.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  leading: Image.asset(favorites[index].imageUrl),
+                  title: Text(favorites[index].title),
+                  subtitle: Text('\$${favorites[index].price}'),
+                  trailing: IconButton(
+                    icon: const Icon(
+                      Icons.favorite,
+                      color: Colors.red,
+                    ),
+                    onPressed: () {
+                      favoritesViewModel.removeFromFavorites(favorites[index]);
+                    },
+                  ),
+                );
+              },
+            );
+          },
+        ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _toggleView,
-        child: Icon(isListView ? Icons.grid_view : Icons.list),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.message),
-            label: 'Messages',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favorites',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
-        currentIndex: 2,
-        selectedItemColor: Colors.blue,
-        onTap: (index) {
-          // Handle navigation
-        },
-      ),
-    );
-  }
-
-  Widget _buildListView() {
-    return ListView.builder(
-      itemCount: 10, // Replace with your item count
-      itemBuilder: (context, index) {
-        return Card(
-          child: ListTile(
-            leading: Image.network(
-                'https://via.placeholder.com/150'), // Replace with your item image
-            title: Text('Item $index'), // Replace with your item title
-            subtitle: Text(
-                'Price: \$${index * 1000}'), // Replace with your item price
-            trailing: IconButton(
-              icon: const Icon(
-                  Icons.favorite_border), // Replace with favorite logic
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        notchMargin: 6.0,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              icon: const Icon(Icons.home),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                );
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.message),
               onPressed: () {},
             ),
-          ),
-        );
-      },
-    );
-  }
-
-  Widget _buildGridView() {
-    return GridView.builder(
-      gridDelegate:
-          const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-      itemCount: 10, // Replace with your item count
-      itemBuilder: (context, index) {
-        return Card(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.network(
-                  'https://via.placeholder.com/150'), // Replace with your item image
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text('Item $index'), // Replace with your item title
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text(
-                    'Price: \$${index * 1000}'), // Replace with your item price
-              ),
-              IconButton(
-                icon: const Icon(
-                    Icons.favorite_border), // Replace with favorite logic
-                onPressed: () {},
-              ),
-            ],
-          ),
-        );
-      },
+            IconButton(
+              icon: const Icon(Icons.favorite, color: Colors.blue, size: 30),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const FavoritesPage()),
+                );
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.person),
+              onPressed: () {},
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
