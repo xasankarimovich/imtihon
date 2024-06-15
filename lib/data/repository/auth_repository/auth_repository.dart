@@ -35,19 +35,6 @@ class AuthHttpRepository {
       return data;
     } catch (e) {
       print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
 
       rethrow;
     }
