@@ -35,12 +35,26 @@ class AuthHttpRepository {
       return data;
     } catch (e) {
       print('Exception: $e');
+      print('Exception: $e');
+      print('Exception: $e');
+      print('Exception: $e');
+      print('Exception: $e');
+      print('Exception: $e');
+      print('Exception: $e');
+      print('Exception: $e');
+      print('Exception: $e');
+      print('Exception: $e');
+      print('Exception: $e');
+      print('Exception: $e');
+      print('Exception: $e');
+      print('Exception: $e');
+
       rethrow;
     }
   }
 }
 
- Future<Map<String, dynamic>> getUserData() async {
+Future<Map<String, dynamic>> getUserData() async {
   final response = await http.get(
       Uri.parse('https://imtihon-24fde-default-rtdb.firebaseio.com/User.json'));
 
