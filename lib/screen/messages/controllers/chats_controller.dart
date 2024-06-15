@@ -1,5 +1,4 @@
 import 'package:imtihon/screen/messages/models/chat.dart';
-import 'package:imtihon/screen/messages/models/messages.dart';
 
 class ChatsController {
   final List<Chat> _list = [

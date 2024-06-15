@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imtihon/screen/admin/views/screens/admin_main.dart';
 import 'package:imtihon/screen/auth/login/login_screen.dart';
 import 'package:imtihon/screen/messages/views/screens/message_page.dart';
 import 'package:imtihon/screen/messages/views/screens/page_details.dart';
@@ -13,7 +14,6 @@ void main() {
       providers: [
         ChangeNotifierProvider(
           create: (_) => AuthViewModel(),
-
         ),
       ],
       child: const MyApp(),
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
     height = context.getHeight();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: AdminMain(),
     );
   }
 }

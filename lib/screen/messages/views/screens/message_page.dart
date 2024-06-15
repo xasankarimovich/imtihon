@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:gap/gap.dart';
 import 'package:imtihon/screen/messages/views/screens/page_details.dart';
 import 'package:imtihon/screen/messages/views/widgets/search_view_delegate.dart';
+import 'package:imtihon/utils/extension/extension.dart';
 
 class MessagePage extends StatefulWidget {
   const MessagePage({super.key});
@@ -42,10 +42,10 @@ class _MessagePageState extends State<MessagePage> {
             child: InkWell(
               child: Container(
                 decoration: BoxDecoration(
-                    color: Color.fromARGB(44, 160, 187, 244),
+                    color: const Color.fromARGB(44, 160, 187, 244),
                     borderRadius: BorderRadius.circular(30)),
                 child: ListTile(
-                  title: Text("Search Message"),
+                  title: const Text("Search Message"),
                   trailing: SvgPicture.asset("assets/svg_icons/search.svg"),
                 ),
               ),
@@ -59,7 +59,7 @@ class _MessagePageState extends State<MessagePage> {
               },
             ),
           ),
-          const Gap(20),
+         20.boxH(),
           Expanded(
             child: ListView.builder(
                 itemCount: 10,
@@ -71,7 +71,7 @@ class _MessagePageState extends State<MessagePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (ctx) => PageDetails(),
+                              builder: (ctx) => const PageDetails(),
                             ),
                           );
                         },

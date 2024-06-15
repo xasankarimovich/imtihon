@@ -22,8 +22,7 @@ dependencies:
   zoom_tap_animation: ^1.1.0
   convex_bottom_bar: ^3.2.0
   flutter_svg: ^2.0.10+1
-  flutter_screenutil: ^5.9.3
-  gap: ^3.0.1
+  lottie: ^3.1.2
 
 
 
@@ -33,7 +32,6 @@ dev_dependencies:
 
 
   flutter_lints: ^3.0.0
-  flutter_svg: ^2.0.10+1
 
 
 flutter:
@@ -44,6 +42,7 @@ flutter:
   assets:
     - assets/images/
     - assets/svg_icons/
+    - assets/animations/
 
 
 

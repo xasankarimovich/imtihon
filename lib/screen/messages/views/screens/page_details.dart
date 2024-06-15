@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:gap/gap.dart';
 import 'package:imtihon/utils/extension/extension.dart';
 
 class PageDetails extends StatefulWidget {
@@ -49,9 +48,9 @@ class _PageDetailsState extends State<PageDetails> {
                             ),
                           ),
                         ),
-                        const Gap(10),
+                        10.boxH(),
                         Text(DateTime.now().dateFormatToString()),
-                        const Gap(30),
+                        30.boxW(),
                       ],
                     );
                   }),
