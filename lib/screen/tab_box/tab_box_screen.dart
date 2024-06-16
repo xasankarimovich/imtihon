@@ -9,6 +9,7 @@ class TabBoxScreen extends StatelessWidget {
     return Scaffold(
       body: Column(),
       bottomNavigationBar: ConvexAppBar(
+        color: Colors.green,
         items: const [
           TabItem(icon: Icons.home, title: 'Home'),
           TabItem(icon: Icons.map, title: 'Discovery'),
