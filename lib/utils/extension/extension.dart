@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-double width = 0.0;
-double height = 0.0;
+double width = 375;
+double height = 860;
 
 extension Size on num {
   //SizedBox height
-  SizedBox boxH() => SizedBox(height: (this / 812) * height);
+  SizedBox boxH() => SizedBox(height: (this / 860) * height);
   //SizedBox width
   SizedBox boxW() => SizedBox(width: (this / 375) * width);
 
-  double get h => (this / 812) * height;
+  double get h => (this / 860) * height;
 
   double get w => (this / 375) * width;
 }
@@ -29,7 +29,7 @@ extension ContextExtension on BuildContext {
   }
 }
 
-// date time ni format qilish faqat kun oy va vaqatni olish uchun
+
 
 Map monthes = {
   "1": "Yanvar",

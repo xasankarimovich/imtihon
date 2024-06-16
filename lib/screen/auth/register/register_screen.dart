@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:imtihon/data/model/user/user_model.dart';
 import 'package:imtihon/data/repository/auth_repository/auth_repository.dart';
-import 'package:imtihon/screen/auth/widget/input_item.dart';
+import 'package:imtihon/screen/widgets/input_item.dart';
 import 'package:imtihon/utils/color/app_color.dart';
 import 'package:imtihon/utils/constants/app_constants.dart';
 import 'package:imtihon/utils/extension/extension.dart';
 import 'package:imtihon/utils/style/app_text_style.dart';
+import 'package:provider/provider.dart';
+import 'package:imtihon/view_model/auth_view_model.dart';
 
 import '../../../utils/image_path/images_path.dart';
 
@@ -18,7 +20,6 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  AuthHttpRepository authHttpRepository = AuthHttpRepository();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
@@ -29,7 +30,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        // Use constant value
         child: Form(
           key: _formKey,
           child: Column(
@@ -68,29 +68,37 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
-                    await authHttpRepository.authenticate(
-                      userData: UserModel(
-                        id: "id",
-                        email: _emailController.text,
-                        password: _passwordController.text,
-                        name: _nameController.text,
-                      ),
-                    );
-                    print("object");
-                    // Add sign up logic here
-                  }
+              Consumer<AuthViewModel>(
+                builder: (context, authViewModel, child) {
+                  return ElevatedButton(
+                    onPressed: () async {
+                      if (_formKey.currentState!.validate()) {
+                        UserModel user = UserModel(
+                          id: "id",
+                          email: _emailController.text,
+                          password: _passwordController.text,
+                          name: _nameController.text,
+                        );
+
+                        await authViewModel.register(userModel: user);
+                        if (!authViewModel.isLoading) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Registration Successful!')),
+                          );
+                          // Navigate to another screen or perform other actions
+                        }
+                      }
+                    },
+                    child: authViewModel.isLoading
+                        ? const CircularProgressIndicator(color: Colors.white)
+                        : const Text('Sign Up'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                      textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                  );
                 },
-                child: const Text('Sign Up'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                  textStyle: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.bold),
-                ),
               ),
               const SizedBox(height: 20),
               Row(
@@ -122,14 +130,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   icon: SvgPicture.asset(AppIconsSvg.googleIcon),
                   label: Text(
                     'Sign With Google',
-                    style: AppTextStyle.thin
-                        .copyWith(color: AppColors.c0A0D14, fontSize: 12.h),
+                    style: AppTextStyle.thin.copyWith(color: AppColors.c0A0D14, fontSize: 12),
                   ),
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black,
                     backgroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 15, horizontal: 20),
+                    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                       side: const BorderSide(color: Colors.grey),
@@ -137,7 +143,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
               ),
-              10.boxH(),
+              const SizedBox(height: 10),
               SizedBox(
                 width: 325.w,
                 height: 48.h,
@@ -146,14 +152,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   icon: SvgPicture.asset(AppIconsSvg.appleIcon, height: 24),
                   label: Text(
                     'Sign With Apple',
-                    style: AppTextStyle.medium
-                        .copyWith(color: AppColors.c0A0D14, fontSize: 12),
+                    style: AppTextStyle.medium.copyWith(color: AppColors.c0A0D14, fontSize: 12),
                   ),
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black,
                     backgroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 15, horizontal: 20),
+                    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                       side: const BorderSide(color: Colors.grey),
@@ -161,11 +165,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
               ),
-              20.boxH(),
               const SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
-                  // Navigate to login screen
                   Navigator.pop(context);
                 },
                 child: const Text.rich(

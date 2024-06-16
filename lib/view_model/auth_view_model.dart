@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-
 import '../data/model/user/user_model.dart';
 import '../data/repository/auth_repository/auth_repository.dart';
 
@@ -9,24 +8,36 @@ class AuthViewModel extends ChangeNotifier {
 
   Future<void> register({required UserModel userModel}) async {
     isLoading = true;
-
     notifyListeners();
-    await AuthHttpRepository().authenticate(userData: userModel);
+    await AuthHttpRepository().register(userData: userModel);
     isLoading = false;
     notifyListeners();
   }
 
-  Future<void> login({required UserModel userData}) async {
+  Future<void> login({required String email, required String password}) async {
     isLoading = true;
     notifyListeners();
-    UserModel userModel =
-        UserModel.fromMap(getUserData() as Map<String, dynamic>);
-    if (userModel.email == userData.email &&
-        userModel.password == userData.password) {
+    try {
+      await AuthHttpRepository().login(email: email, password: password);
       isCheckAuth = true;
-      notifyListeners();
+    } catch (e) {
+      isCheckAuth = false;
     }
     isLoading = false;
+    notifyListeners();
+  }
+
+  Future<void> resetPassword({required String email}) async {
+    isLoading = true;
+    notifyListeners();
+    await AuthHttpRepository().resetPassword(email: email);
+    isLoading = false;
+    notifyListeners();
+  }
+
+  void initialState() {
+    isLoading = false;
+    isCheckAuth = false;
     notifyListeners();
   }
 }

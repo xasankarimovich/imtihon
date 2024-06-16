@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:imtihon/utils/extension/extension.dart';
 
-import '../../../utils/color/app_color.dart';
-import '../../../utils/style/app_text_style.dart';
+import '../../utils/color/app_color.dart';
+import '../../utils/style/app_text_style.dart';
 
 class InputText extends StatefulWidget {
   const InputText({

@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
     height = context.getHeight();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AdminMain(),
+      home: SplashScreen(),
     );
   }
 }

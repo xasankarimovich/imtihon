@@ -5,6 +5,7 @@ import 'package:imtihon/utils/extension/extension.dart';
 import 'package:imtihon/utils/image_path/images_path.dart';
 import 'package:imtihon/utils/style/app_text_style.dart';
 
+import '../login/login_screen.dart';
 import '../login/sign_up/sign_up.dart';
 
 class GetStartedScreen extends StatelessWidget {
@@ -33,7 +34,7 @@ class GetStartedScreen extends StatelessWidget {
 
                 onPressed: () {
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx){
-                    return SignUp();
+                    return LoginScreen();
                   },),);
                 },
 
