@@ -244,15 +244,15 @@ class _HomeScreenState extends State<HomeScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           _buildTopCategoryCard(
-              "Classic", 'assets/image1.png', const ClassicCarScreen()),
+              "Classic", 'assets/svg_icons/classic.svg', const ClassicCarScreen()),
           const SizedBox(width: 10),
           _buildTopCategoryCard(
-              "Turbo", 'assets/image2.png', const TurboScreen()),
+              "Turbo", 'assets/svg_icons/turbo.svg', const TurboScreen()),
           const SizedBox(width: 10),
-          _buildTopCategoryCard("F1", 'assets/image3.png', const F1Screen()),
+          _buildTopCategoryCard("F1", 'assets/svg_icons/f1.svg', const F1Screen()),
           const SizedBox(width: 10),
           _buildTopCategoryCard(
-              "Gybrid", 'assets/image4.png', const GybridScreen()),
+              "Gybrid", 'assets/svg_icons/gybrid.svg', const GybridScreen()),
         ],
       ),
     );

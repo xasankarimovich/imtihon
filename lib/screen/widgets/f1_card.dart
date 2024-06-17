@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:imtihon/utils/image_path/images_path.dart';
 import 'package:imtihon/view_model/favorites_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -20,18 +21,18 @@ class _F1CardState extends State<F1Card> {
 
     final List<Course> courses = [
       Course(
-        imageUrl: 'assets/classic_car.png',
-        title: '1979 Pontiac Firebird Trans Am',
+        imageUrl: AppImages.onBoardingLambargini303,
+        title: 'Lambargini303',
         price: 32900,
       ),
       Course(
-        imageUrl: 'assets/ford_bronko.png',
-        title: '1979 Ford Bronko',
+        imageUrl: AppImages.onBoardingLambargini,
+        title: 'Lombargini',
         price: 32900,
       ),
       Course(
-        imageUrl: 'assets/Chrysler.png',
-        title: '1955 Chrysler',
+        imageUrl: AppImages.onBoardingAudiProdi,
+        title: 'Audi',
         price: 18500,
       ),
     ];

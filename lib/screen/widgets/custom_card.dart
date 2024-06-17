@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:imtihon/utils/image_path/images_path.dart';
 import 'package:imtihon/view_model/favorites_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -18,8 +19,8 @@ class _CustomCardState extends State<CustomCard> {
     final favoritesViewModel =
         Provider.of<FavoritesViewModel>(context, listen: false);
     final course = Course(
-      imageUrl: 'assets/lamborgini.png',
-      title: 'Lamborgini 303',
+      imageUrl: AppImages.onBoardingAudiProdi,
+      title: 'Audi',
       price: 493030220,
     );
 
@@ -37,7 +38,7 @@ class _CustomCardState extends State<CustomCard> {
               child: SizedBox(
                 width: 200, // Adjust the width as needed
                 child: Image.asset(
-                  'assets/lamborgini.png',
+                  AppImages.onBoardingAudiProdi,
                   height: 120, // Adjust the height as needed
                   fit: BoxFit.cover,
                 ),

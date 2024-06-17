@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:imtihon/utils/image_path/images_path.dart';
 import 'package:imtihon/view_model/favorites_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -22,17 +23,17 @@ class _ClassCarCardState extends State<ClassCarCard> {
 
     final courses = [
       Course(
-        imageUrl: 'assets/classic_car.png',
+        imageUrl: AppImages.onBoardingAudiProdi,
         title: 'Pontiac Firebird Trans',
         price: 32900,
       ),
       Course(
-        imageUrl: 'assets/ford_bronko.png',
+        imageUrl: AppImages.onBoardingLambargini,
         title: '1979 Ford Bronko',
         price: 32900,
       ),
       Course(
-        imageUrl: 'assets/Chrysler.png',
+        imageUrl: AppImages.onBoardingLambargini303,
         title: '1955 Chrysler',
         price: 18500,
       ),

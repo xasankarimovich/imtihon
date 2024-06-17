@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:imtihon/utils/image_path/images_path.dart';
 import 'package:imtihon/view_model/favorites_view_model.dart';
 import 'package:provider/provider.dart';
 
 class TurbCarCard extends StatefulWidget {
-  const TurbCarCard({Key? key}) : super(key: key);
+  const TurbCarCard({super.key});
 
   @override
   State<TurbCarCard> createState() => _TurbCarCardState();
@@ -17,22 +18,23 @@ class _TurbCarCardState extends State<TurbCarCard> {
 
   @override
   Widget build(BuildContext context) {
-    final favoritesViewModel = Provider.of<FavoritesViewModel>(context, listen: false);
-    
-    final courses = [
+    final favoritesViewModel =
+        Provider.of<FavoritesViewModel>(context, listen: false);
+
+    final List<Course> courses = [
       Course(
-        imageUrl: 'assets/classic_car.png',
-        title: '1979 Pontiac Firebird Trans Am',
+        imageUrl: AppImages.onBoardingLambargini303,
+        title: 'Lambargini303',
         price: 32900,
       ),
       Course(
-        imageUrl: 'assets/ford_bronko.png',
-        title: '1979 Ford Bronko',
+        imageUrl: AppImages.onBoardingLambargini,
+        title: 'Lombargini',
         price: 32900,
       ),
       Course(
-        imageUrl: 'assets/Chrysler.png',
-        title: '1955 Chrysler',
+        imageUrl: AppImages.onBoardingAudiProdi,
+        title: 'Audi',
         price: 18500,
       ),
     ];
@@ -74,8 +76,8 @@ class CarCard extends StatelessWidget {
     required this.course,
     required this.isLiked,
     required this.onLikeToggle,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -111,15 +113,15 @@ class CarCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 4),
-                Row(
+                const Row(
                   children: [
-                    const Icon(
+                    Icon(
                       Icons.star,
                       color: Colors.amber,
                       size: 20,
                     ),
-                    const SizedBox(width: 4),
-                    const Text(
+                    SizedBox(width: 4),
+                    Text(
                       '3.9',
                       style: TextStyle(
                         fontSize: 14,
@@ -129,29 +131,29 @@ class CarCard extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 8),
-                Row(
+                const Row(
                   children: [
-                    const Icon(
+                    Icon(
                       Icons.directions_car,
                       color: Colors.grey,
                       size: 20,
                     ),
-                    const SizedBox(width: 4),
-                    const Text(
+                    SizedBox(width: 4),
+                    Text(
                       '400 hp',
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(width: 20),
-                    const Icon(
+                    SizedBox(width: 20),
+                    Icon(
                       Icons.settings,
                       color: Colors.grey,
                       size: 20,
                     ),
-                    const SizedBox(width: 4),
-                    const Text(
+                    SizedBox(width: 4),
+                    Text(
                       'Hand',
                       style: TextStyle(
                         fontSize: 14,
