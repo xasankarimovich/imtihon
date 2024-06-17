@@ -29,7 +29,8 @@ class AuthHttpRepository {
     }
   }
 
-  Future<Map<String, dynamic>> login({required String email, required String password}) async {
+  Future<Map<String, dynamic>> login(
+      {required String email, required String password}) async {
     Uri url = Uri.parse(
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=$_apiKey");
 

@@ -4,8 +4,6 @@ class UserModel {
   final String password;
   final String name;
 
-
-
   UserModel({
     required this.id,
     required this.email,
@@ -19,7 +17,6 @@ class UserModel {
       email: map['email'] as String? ?? '',
       password: map['password'] as String? ?? '',
       name: map['name'] as String? ?? '',
-
     );
   }
 
@@ -28,9 +25,7 @@ class UserModel {
       "id": id,
       "email": email,
       "password": password,
-      'name':name,
+      'name': name,
     };
   }
-
-
 }

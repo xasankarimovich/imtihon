@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class SearchViewDelegate extends SearchDelegate<String> {
   final List data;
+
   SearchViewDelegate(this.data);
+
   @override
   List<Widget> buildActions(BuildContext context) {
     return [

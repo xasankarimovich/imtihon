@@ -1,15 +1,16 @@
-class AppImages{
+class AppImages {
   //png
   static const String onBoardingOne = 'assets/images/splash.png';
 
   static const String onBoardingAudiProdi = 'assets/images/audi_prodi.png';
   static const String onBoardingLambargini = 'assets/images/lambargini.png';
-  static const String onBoardingLambargini303 = 'assets/images/lambargini303.png';
+  static const String onBoardingLambargini303 =
+      'assets/images/lambargini303.png';
   static const String onBoardingTeslaEdits = 'assets/images/tesla_edits.png';
-
 }
+
 // svg
-class AppIconsSvg{
+class AppIconsSvg {
   static const String googleIcon = 'assets/svg_icons/google.svg';
   static const String appleIcon = 'assets/svg_icons/apple.svg';
   static const String locationIcon = 'assets/svg_icons/location.svg';
@@ -29,17 +30,18 @@ class AppIconsSvg{
   static const String highPoverIcon = 'assets/svg_icons/highPover.svg';
   static const String invite_friendIcon = 'assets/svg_icons/invite_friend.svg';
   static const String locationblueIcon = 'assets/svg_icons/locationblue.svg';
-  static const String logos_mastercardIcon = 'assets/svg_icons/logos_mastercard.svg';
+  static const String logos_mastercardIcon =
+      'assets/svg_icons/logos_mastercard.svg';
   static const String padeletsyaIcon = 'assets/svg_icons/padeletsya.svg';
   static const String select_objectIcon = 'assets/svg_icons/select_object.svg';
   static const String sertsaIcon = 'assets/svg_icons/sertsa.svg';
   static const String shareIcon = 'assets/svg_icons/share.svg';
   static const String spotifyIcon = 'assets/svg_icons/spotify.svg';
   static const String unionIcon = 'assets/svg_icons/union.svg';
-  static const String your_purchassing_successIcon = 'assets/svg_icons/your_purchassing_success.svg';
+  static const String your_purchassing_successIcon =
+      'assets/svg_icons/your_purchassing_success.svg';
   static const String carlistIcon = 'assets/svg_icons/carlist.svg';
   static const String editfolderIcon = 'assets/svg_icons/editfolder.svg';
   static const String affliateIcon = 'assets/svg_icons/affliate.svg';
   static const String mph0_70Icon = 'assets/svg_icons/0 - 70mph.svg';
-
 }

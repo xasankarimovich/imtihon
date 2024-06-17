@@ -5,7 +5,8 @@ import 'package:imtihon/data/model/user/user_model.dart';
 class AuthHttpRepository {
   final String _apiKey = "AIzaSyBwfMiUYUoPeZ5-oSjAGWzFRttNwt5VArU";
 
-  Future<Map<String, dynamic>> authenticate({required UserModel userData}) async {
+  Future<Map<String, dynamic>> authenticate(
+      {required UserModel userData}) async {
     Uri url = Uri.parse(
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=$_apiKey");
 

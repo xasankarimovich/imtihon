@@ -8,7 +8,9 @@ import 'package:imtihon/utils/extension/extension.dart';
 import 'package:imtihon/view_model/auth_view_model.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+Future<void> main() async {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
   runApp(
     MultiProvider(
       providers: [

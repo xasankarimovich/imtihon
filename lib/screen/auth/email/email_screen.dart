@@ -20,35 +20,40 @@ class GetStartedScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Lets Get Started',
-                style:
-                    AppTextStyle.semiBold.copyWith(color: AppColors.c0A0D14,fontSize: 34,fontWeight: FontWeight.w900)),
+                style: AppTextStyle.semiBold.copyWith(
+                    color: AppColors.c0A0D14,
+                    fontSize: 34,
+                    fontWeight: FontWeight.w900)),
             10.boxH(),
             Text('Find the right ticket and what you want only in myticket',
                 textAlign: TextAlign.center,
-                style: AppTextStyle.medium.copyWith(color: Colors.grey,)),
+                style: AppTextStyle.medium.copyWith(
+                  color: Colors.grey,
+                )),
             30.boxH(),
             SizedBox(
               height: 48.h,
               width: 325.w,
               child: ElevatedButton.icon(
-
                 onPressed: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx){
-                    return LoginScreen();
-                  },),);
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (ctx) {
+                        return LoginScreen();
+                      },
+                    ),
+                  );
                 },
-
                 icon: const Icon(
                   Icons.email_outlined,
                   color: Colors.grey,
                 ),
                 label: Text(
                   'Sign Up With Email',
-
-                  style: AppTextStyle.thin.copyWith(color: AppColors.c8F95AB),
+                  style: AppTextStyle.thin
+                      .copyWith(color: AppColors.c8F95AB, fontSize: 24.h),
                 ),
-
-
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.black,
                   backgroundColor: Colors.grey[200],
@@ -76,7 +81,7 @@ class GetStartedScreen extends StatelessWidget {
                 label: Text(
                   'Sign With Google',
                   style: AppTextStyle.thin
-                      .copyWith(color: AppColors.c0A0D14, fontSize: 12.h),
+                      .copyWith(color: AppColors.c0A0D14, fontSize: 15.h),
                 ),
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.black,
@@ -84,7 +89,6 @@ class GetStartedScreen extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                   shape: RoundedRectangleBorder(
-
                     borderRadius: BorderRadius.circular(30),
                     side: const BorderSide(color: Colors.grey),
                   ),
@@ -101,7 +105,7 @@ class GetStartedScreen extends StatelessWidget {
                 label: Text(
                   'Sign With Apple',
                   style: AppTextStyle.medium
-                      .copyWith(color: AppColors.c0A0D14, fontSize: 12),
+                      .copyWith(color: AppColors.c0A0D14, fontSize: 15.h),
                 ),
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.black,

@@ -4,12 +4,14 @@ import 'package:imtihon/utils/image_path/images_path.dart';
 import '../../main.dart';
 import '../auth/login/login_screen.dart';
 import '../best_car/best_car.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
+
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {

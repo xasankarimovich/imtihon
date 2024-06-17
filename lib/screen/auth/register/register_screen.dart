@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 import 'package:imtihon/view_model/auth_view_model.dart';
 
 import '../../../utils/image_path/images_path.dart';
+import '../../tab_box/tab_box_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -39,19 +40,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 'Create an account',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 10),
+              10.boxH(),
               InputText(
                 controller: _nameController,
                 title: "Name",
                 regExp: AppConstants.nameRegExp,
               ),
-              const SizedBox(height: 10),
+              10.boxH(),
               InputText(
                 controller: _emailController,
                 title: "Email",
                 regExp: AppConstants.emailRegExp,
               ),
-              const SizedBox(height: 10),
+          10.boxH(),
               InputText(
                 controller: _passwordController,
                 title: "Password",
@@ -67,35 +68,44 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: const Text('Forgot Password?'),
                 ),
               ),
-              const SizedBox(height: 20),
+              20.boxH(),
               Consumer<AuthViewModel>(
                 builder: (context, authViewModel, child) {
-                  return ElevatedButton(
-                    onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        UserModel user = UserModel(
-                          id: "id",
-                          email: _emailController.text,
-                          password: _passwordController.text,
-                          name: _nameController.text,
-                        );
-
-                        await authViewModel.register(userModel: user);
-                        if (!authViewModel.isLoading) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Registration Successful!')),
+                  return SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          UserModel user = UserModel(
+                            id: "id",
+                            email: _emailController.text,
+                            password: _passwordController.text,
+                            name: _nameController.text,
                           );
-                          // Navigate to another screen or perform other actions
+
+                          await authViewModel.register(userModel: user);
+                          if (!authViewModel.isLoading) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text('Registration Successful!')),
+                            );
+
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx){
+                              return TabBoxScreen();
+                            },),);
+                          }
                         }
-                      }
-                    },
-                    child: authViewModel.isLoading
-                        ? const CircularProgressIndicator(color: Colors.white)
-                        : const Text('Sign Up'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                      textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      },
+                      child: authViewModel.isLoading
+                          ? const CircularProgressIndicator(color: Colors.white)
+                          : const Text('Sign Up'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 40, vertical: 15),
+                        textStyle: const TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
                     ),
                   );
                 },
@@ -130,12 +140,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   icon: SvgPicture.asset(AppIconsSvg.googleIcon),
                   label: Text(
                     'Sign With Google',
-                    style: AppTextStyle.thin.copyWith(color: AppColors.c0A0D14, fontSize: 12),
+                    style: AppTextStyle.thin
+                        .copyWith(color: AppColors.c0A0D14, fontSize: 12),
                   ),
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black,
                     backgroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 15, horizontal: 20),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                       side: const BorderSide(color: Colors.grey),
@@ -152,12 +164,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   icon: SvgPicture.asset(AppIconsSvg.appleIcon, height: 24),
                   label: Text(
                     'Sign With Apple',
-                    style: AppTextStyle.medium.copyWith(color: AppColors.c0A0D14, fontSize: 12),
+                    style: AppTextStyle.medium
+                        .copyWith(color: AppColors.c0A0D14, fontSize: 12),
                   ),
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black,
                     backgroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 15, horizontal: 20),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                       side: const BorderSide(color: Colors.grey),

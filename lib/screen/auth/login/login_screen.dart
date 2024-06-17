@@ -45,7 +45,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   10.boxH(),
                   const Text(
                     "Welcome Back You've been missed",
-                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 16,
+                    ),
                   ),
                   30.boxH(),
                   InputText(
@@ -57,41 +60,42 @@ class _LoginScreenState extends State<LoginScreen> {
                   InputText(
                     controller: _passwordController,
                     title: "Password",
-              
                     regExp: AppConstants.passwordRegExp,
                     isPassword: true,
-              
                   ),
-              
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (ctx)  {
-                            print("object------------------------------------------------------------");
-                            return ResetPasswordScreen();
+                          MaterialPageRoute(builder: (ctx) {
+                            print(
+                                "object------------------------------------------------------------");
+                            return ResetPasswordScreen(
+                              email: '',
+                            );
                           }),
                         );
                       },
-                      child: const Text('Forgot Password?'),
+                      child:  Text('Forgot Password?',style: AppTextStyle.medium.copyWith(fontSize: 14.h),),
                     ),
                   ),
                   20.boxH(),
                   Consumer<AuthViewModel>(
-                    builder: (BuildContext context, AuthViewModel value, Widget? child) {
+                    builder: (BuildContext context, AuthViewModel value,
+                        Widget? child) {
                       return GlobalZoomTapButton(
-              
                         title: value.isLoading ? null : 'Sign In',
                         onTap: () async {
-                          print("object------------------------------------------------------------");
-              
+                          print(
+                              "object------------------------------------------------------------");
+
                           if (_formKey.currentState!.validate()) {
                             await context.read<AuthViewModel>().login(
                                 email: _emailController.text,
                                 password: _passwordController.text);
-              
+
                             if (value.isCheckAuth) {
                               Navigator.push(
                                 context,
@@ -107,16 +111,18 @@ class _LoginScreenState extends State<LoginScreen> {
                                 barrierDismissible: false,
                                 builder: (context) {
                                   return AlertDialog(
-                                    title: const Column(
+                                    title:  Column(
                                       children: [
                                         Text('Error'),
-                                        Text('Invalid Email or Password!'),
+                                        Text('Invalid Email or Password!',style: AppTextStyle.regular.copyWith(fontSize: 17.h,),),
                                       ],
                                     ),
                                     actions: [
                                       TextButton(
                                           onPressed: () {
-                                            context.read<AuthViewModel>().initialState();
+                                            context
+                                                .read<AuthViewModel>()
+                                                .initialState();
                                             Navigator.pop(context);
                                           },
                                           child: const Text('Ok'))
@@ -134,7 +140,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: Colors.blue,
                           borderRadius: BorderRadius.circular(16),
                         ),
-                        child: value.isLoading ? const CupertinoActivityIndicator(color: Colors.white) : null,
+                        child: value.isLoading
+                            ? const CupertinoActivityIndicator(
+                                color: Colors.white)
+                            : null,
                       );
                     },
                   ),
@@ -168,12 +177,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       icon: SvgPicture.asset(AppIconsSvg.googleIcon),
                       label: Text(
                         'Sign With Google',
-                        style: AppTextStyle.thin.copyWith(color: AppColors.c0A0D14, fontSize: 12.h),
+                        style: AppTextStyle.thin
+                            .copyWith(color: AppColors.c0A0D14, fontSize: 12.h),
                       ),
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.black,
                         backgroundColor: Colors.white,
-                        padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
+                        padding: EdgeInsets.symmetric(
+                            vertical: 15.h, horizontal: 20.w),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                           side: const BorderSide(color: Colors.grey),
@@ -187,15 +198,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 48.h,
                     child: ElevatedButton.icon(
                       onPressed: () {},
-                      icon: SvgPicture.asset(AppIconsSvg.appleIcon, height: 24.h),
+                      icon:
+                          SvgPicture.asset(AppIconsSvg.appleIcon, height: 24.h),
                       label: Text(
                         'Sign With Apple',
-                        style: AppTextStyle.medium.copyWith(color: AppColors.c0A0D14, fontSize: 12.h),
+                        style: AppTextStyle.medium
+                            .copyWith(color: AppColors.c0A0D14, fontSize: 12.h),
                       ),
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.black,
                         backgroundColor: Colors.white,
-                        padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
+                        padding: EdgeInsets.symmetric(
+                            vertical: 15.h, horizontal: 20.w),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                           side: const BorderSide(color: Colors.grey),

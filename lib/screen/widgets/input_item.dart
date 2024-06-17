@@ -49,34 +49,37 @@ class _InputTextState extends State<InputText> {
         hintStyle: AppTextStyle.regular,
         suffixIcon: widget.isPassword
             ? IconButton(
-          onPressed: () {
-            setState(() {
-              isVisible = !isVisible;
-            });
-          },
-          icon: Icon(
-            isVisible ? Icons.visibility_off : Icons.remove_red_eye,
-          ),
-        )
+                onPressed: () {
+                  setState(() {
+                    isVisible = !isVisible;
+                  });
+                },
+                icon: Icon(
+                  isVisible ? Icons.visibility_off : Icons.remove_red_eye,
+                ),
+              )
             : null,
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.w),
           borderSide: const BorderSide(
             width: 1,
             color: AppColors.c95969D,
-          ),),
+          ),
+        ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.w),
           borderSide: const BorderSide(
             width: 1,
             color: AppColors.c95969D,
-          ),),
+          ),
+        ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.w),
           borderSide: const BorderSide(
             width: 1,
             color: AppColors.c95969D,
-          ),),
+          ),
+        ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.w),
           borderSide: const BorderSide(

@@ -6,6 +6,7 @@ double height = 860;
 extension Size on num {
   //SizedBox height
   SizedBox boxH() => SizedBox(height: (this / 860) * height);
+
   //SizedBox width
   SizedBox boxW() => SizedBox(width: (this / 375) * width);
 
@@ -28,8 +29,6 @@ extension ContextExtension on BuildContext {
     return screenHeight;
   }
 }
-
-
 
 Map monthes = {
   "1": "Yanvar",

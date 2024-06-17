@@ -11,6 +11,7 @@ class ChatsController {
       time: "12:2",
     )
   ];
+
   List<Chat> get list {
     return [..._list];
   }

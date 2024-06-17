@@ -87,7 +87,7 @@ class BestCar extends StatelessWidget {
                       ),
                       child: Text('Next',
                           style: AppTextStyle.medium
-                              .copyWith(color: Colors.white)),
+                              .copyWith(color: Colors.white, fontSize: 24.h)),
                     ),
                   ),
                 ),
@@ -95,7 +95,7 @@ class BestCar extends StatelessWidget {
                 Center(
                   child: Text('Privacy Policy',
                       style: AppTextStyle.thin.copyWith(
-                          fontSize: 14,
+                          fontSize: 14.h,
                           color: Colors.grey,
                           decoration: TextDecoration.underline)),
                 ),

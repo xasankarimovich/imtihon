@@ -1,4 +1,3 @@
-
 class Chat {
   String name;
   String lastText;
@@ -6,6 +5,7 @@ class Chat {
 
   String message;
   String time;
+
   Chat({
     required this.name,
     required this.lastText,

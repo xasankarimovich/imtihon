@@ -23,19 +23,19 @@ class BestCarSplash extends StatelessWidget {
           ),
           Padding(
             padding:
-            const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
+                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Find Best Cars With Us \nNow',
                     style: AppTextStyle.semiBold),
-                SizedBox(height: 16),
+                SizedBox(height: 16.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      width: 8,
-                      height: 8,
+                      width: 8.w,
+                      height: 8.h,
                       decoration: BoxDecoration(
                         color: Colors.blue,
                         shape: BoxShape.circle,
@@ -43,8 +43,8 @@ class BestCarSplash extends StatelessWidget {
                     ),
                     4.boxW(),
                     Container(
-                      width: 8,
-                      height: 8,
+                      width: 8.w,
+                      height: 8.h,
                       decoration: BoxDecoration(
                         color: Colors.blue,
                         shape: BoxShape.circle,
@@ -52,8 +52,8 @@ class BestCarSplash extends StatelessWidget {
                     ),
                     SizedBox(width: 4),
                     Container(
-                      width: 8,
-                      height: 8,
+                      width: 8.w,
+                      height: 8.h,
                       decoration: BoxDecoration(
                         color: AppColors.c3287FF,
                         shape: BoxShape.circle,
@@ -80,7 +80,7 @@ class BestCarSplash extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blue,
                         padding:
-                        EdgeInsets.symmetric(horizontal: 80, vertical: 16),
+                            EdgeInsets.symmetric(horizontal: 80.w, vertical: 16.h),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
@@ -95,7 +95,7 @@ class BestCarSplash extends StatelessWidget {
                 Center(
                   child: Text('Privacy Policy',
                       style: AppTextStyle.thin.copyWith(
-                          fontSize: 14,
+                          fontSize: 14.h,
                           color: Colors.grey,
                           decoration: TextDecoration.underline)),
                 ),
