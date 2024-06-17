@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:imtihon/data/model/user/user_model.dart';
-import 'package:imtihon/data/repository/auth_repository/auth_repository.dart';
 import 'package:imtihon/screen/auth/register/register_screen.dart';
 import 'package:imtihon/screen/auth/widget/input_item.dart';
 import 'package:imtihon/screen/tab_box/tab_box_screen.dart';
@@ -76,6 +75,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   return GlobalZoomTapButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
+                        UserModel userModel = UserModel(
+                          id: DateTime.now().microsecond.toString(),
+                          email: _emailController.text,
+                          password: _passwordController.text,
+                          name: '',
+                        );
+                        context
+                            .read<AuthViewModel>()
+                            .login(userModel: userModel);
                         final data = getUserData();
                         print(data);
                         UserModel userModel =
@@ -98,6 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                     child: value.isLoading
                         ? const CupertinoActivityIndicator()
+                        : const Text('Login'),
                         : Text(
                             'Sign',
                             style: AppTextStyle.semiBold

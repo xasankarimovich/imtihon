@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:imtihon/screen/admin/views/screens/admin_main.dart';
 import 'package:imtihon/screen/auth/login/login_screen.dart';
 import 'package:imtihon/screen/messages/views/screens/message_page.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     width = context.getWidth();
     height = context.getHeight();
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: AdminMain(),
     );
