@@ -28,3 +28,38 @@ extension ContextExtension on BuildContext {
     return screenHeight;
   }
 }
+
+// date time ni format qilish faqat kun oy va vaqatni olish uchun
+
+Map monthes = {
+  "1": "Yanvar",
+  "2": "Fevral",
+  "3": "Mart",
+  "4": "Aprel",
+  "5": "May",
+  "6": "Iyun",
+  "7": "Iyul",
+  "8": "Avgusts",
+  "9": "Sentyabr",
+  "10": "Oktyabr",
+  "11": "Noyabr",
+  "12": "Dekabr",
+};
+String time = "Am";
+
+extension Date on DateTime {
+  String dateFormatToString() {
+    final day = this.day.toString().padLeft(2, "0");
+    final month = monthes[this.month.toString()];
+    int.parse(this.hour.toString()) > 12 ? time = "Pm" : time = "Am";
+    final hour = int.parse(
+              this.hour.toString(),
+            ) <=
+            12
+        ? (this.hour.toString().padLeft(2, "0"),)
+        : ((int.parse(this.hour.toString()) - 12).toString().padLeft(2, "0"));
+    final minute = this.minute.toString().padLeft(2, "0");
+
+    return "$month $day , $hour:$minute $time";
+  }
+}

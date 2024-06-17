@@ -15,10 +15,11 @@ class UserModel {
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      id: map['id'],
-      email: map['email'],
-      password: map['password'],
-      name: map['name'],
+      id: map['id'] as String? ?? '',
+      email: map['email'] as String? ?? '',
+      password: map['password'] as String? ?? '',
+      name: map['name'] as String? ?? '',
+
     );
   }
 
