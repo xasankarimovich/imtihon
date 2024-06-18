@@ -3,13 +3,26 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:imtihon/utils/extension/extension.dart';
 
 class PageDetails extends StatefulWidget {
-  const PageDetails({super.key});
+  final int id;
+  const PageDetails({super.key, required this.id});
 
   @override
   State<PageDetails> createState() => _PageDetailsState();
 }
 
 class _PageDetailsState extends State<PageDetails> {
+  final messageController = TextEditingController();
+  List messages = [
+    [
+      "salom",
+      "alik",
+      "ana",
+    ],
+    [
+      "salom",
+      "",
+    ],
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +36,7 @@ class _PageDetailsState extends State<PageDetails> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30.0),
               child: ListView.builder(
-                  itemCount: 10,
+                  itemCount: messages[widget.id].length,
                   itemBuilder: (ctx, index) {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -39,12 +52,12 @@ class _PageDetailsState extends State<PageDetails> {
                                     blurRadius: 2,
                                     color: Colors.blue)
                               ]),
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 40.0, vertical: 12),
                             child: Text(
-                              "qw",
-                              style: TextStyle(color: Colors.white),
+                              messages[widget.id][index],
+                              style: const TextStyle(color: Colors.white),
                             ),
                           ),
                         ),
@@ -71,6 +84,7 @@ class _PageDetailsState extends State<PageDetails> {
                   children: [
                     Flexible(
                       child: TextField(
+                        controller: messageController,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
@@ -79,7 +93,17 @@ class _PageDetailsState extends State<PageDetails> {
                       ),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          if (messageController.text != "" &&
+                              messageController.text.isNotEmpty) {
+                            print("object");
+                            messages[widget.id].add(messageController.text);
+                          }
+                          print(messages[widget.id]);
+                          messageController.text = "";
+                        });
+                      },
                       icon: SvgPicture.asset("assets/svg_icons/send.svg"),
                     )
                   ],

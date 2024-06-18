@@ -1,0 +1,21 @@
+{
+    "users":"Foydalanuvchilar",
+    "admin":"Admin",
+    "announcements":"E'lonlar",
+    "orders":"Buyurtmalar",
+    "selectLanguage":"Tilni tanlang",
+    "searchUser":"Foydalanuvchini qidirish",
+    "edit":"Tahrirlash",
+    "block":"Bloklash",
+    "unblock":"Blokdan chiqarish",
+    "blocked":"bloklangan",
+    "free":"Ochiq",
+    "name":"Ism",
+    "email":"Elektron pochta",
+    "imageUrl":"rasm URL manzili",
+    "close":"Yopish",
+    "save":"Saqlash"
+
+
+
+}

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:imtihon/screen/messages/views/widgets/search_view_delegate.dart';
 
-class OrdersAndPayments extends StatefulWidget {
-  const OrdersAndPayments({super.key});
+class Announcments extends StatefulWidget {
+  const Announcments({super.key});
 
   @override
-  State<OrdersAndPayments> createState() => _OrdersAndPaymentsState();
+  State<Announcments> createState() => _AnnouncmentsState();
 }
 
-class _OrdersAndPaymentsState extends State<OrdersAndPayments> {
+class _AnnouncmentsState extends State<Announcments> {
   List<String> data = [
     "BMW",
     "MERCEDES",
@@ -48,12 +48,6 @@ class _OrdersAndPaymentsState extends State<OrdersAndPayments> {
             setState(() {});
           },
         ),
-      ),
-      body: const Column(
-        children: [
-          Text(" ordered car name car name"),
-          Text("is payed"),
-        ],
       ),
     );
   }

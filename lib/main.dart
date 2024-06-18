@@ -1,3 +1,5 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:imtihon/screen/admin/views/screens/admin_main.dart';
 import 'package:imtihon/screen/auth/login/login_screen.dart';
@@ -8,7 +10,9 @@ import 'package:imtihon/utils/extension/extension.dart';
 import 'package:imtihon/view_model/auth_view_model.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   runApp(
     MultiProvider(
       providers: [
@@ -16,7 +20,16 @@ void main() {
           create: (_) => AuthViewModel(),
         ),
       ],
-      child: const MyApp(),
+      child: EasyLocalization(
+        supportedLocales: const [
+          Locale("uz"),
+          Locale("en"),
+          Locale("ru"),
+        ],
+        path: "resources/langs",
+        startLocale: const Locale("ru"),
+        child: const MyApp(),
+      ),
     ),
   );
 }
@@ -28,9 +41,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     width = context.getWidth();
     height = context.getHeight();
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: AdminMain(),
+    return AdaptiveTheme(
+      initial: AdaptiveThemeMode.light,
+      light: ThemeData(brightness: Brightness.light),
+      dark: ThemeData(brightness: Brightness.dark),
+      builder: (lightTheme, darkTheme) {
+        return MaterialApp(
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          debugShowCheckedModeBanner: false,
+          locale: context.locale,
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          home: const SplashScreen(),
+        );
+      },
     );
   }
 }

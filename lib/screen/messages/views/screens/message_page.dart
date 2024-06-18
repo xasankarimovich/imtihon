@@ -28,6 +28,7 @@ class _MessagePageState extends State<MessagePage> {
     "SUBARU",
   ];
   List filteredData = [];
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +60,7 @@ class _MessagePageState extends State<MessagePage> {
               },
             ),
           ),
-         20.boxH(),
+          20.boxH(),
           Expanded(
             child: ListView.builder(
                 itemCount: 10,
@@ -71,7 +72,7 @@ class _MessagePageState extends State<MessagePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (ctx) => const PageDetails(),
+                              builder: (ctx) =>  PageDetails(id: index,),
                             ),
                           );
                         },
