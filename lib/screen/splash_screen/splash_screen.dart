@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imtihon/utils/image_path/images_path.dart';
 
-import '../../main.dart';
 import '../auth/login/login_screen.dart';
 import '../best_car/best_car.dart';
 class SplashScreen extends StatefulWidget {

@@ -1,6 +1,7 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+
 import 'package:imtihon/screen/admin/views/screens/admin_main.dart';
 import 'package:imtihon/screen/auth/login/login_screen.dart';
 import 'package:imtihon/screen/messages/views/screens/message_page.dart';
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
           home: const SplashScreen(),
         );
       },
+
     );
   }
 }

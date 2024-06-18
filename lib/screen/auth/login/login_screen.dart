@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart'; // "flutter_svg/flutter_svg.dart" import qilishni tekshiring
 import 'package:imtihon/data/model/user/user_model.dart';
-import 'package:imtihon/data/repository/auth_repository/auth_repository.dart';
 import 'package:imtihon/screen/auth/register/register_screen.dart';
 import 'package:imtihon/screen/auth/widget/input_item.dart';
-import 'package:imtihon/screen/widgets/Global_elevated_button/global_elevated_button.dart';
+import 'package:imtihon/screen/tab_box/tab_box_screen.dart';
 import 'package:imtihon/utils/constants/app_constants.dart';
 import 'package:imtihon/utils/extension/extension.dart';
 import 'package:imtihon/view_model/auth_view_model.dart';
@@ -14,6 +13,9 @@ import 'package:provider/provider.dart';
 import '../../../utils/color/app_color.dart';
 import '../../../utils/image_path/images_path.dart';
 import '../../../utils/style/app_text_style.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
+
+import '../../widgets/Global_elevated_button/global_elevated_button.dart'; // Bu importni qo'shish kerak bo'lishi mumkin
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -32,7 +34,6 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        // Use constant value
         child: Form(
           key: _formKey,
           child: Column(
@@ -42,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 'Hello Again!',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 10),
+              10.boxH(),
               const Text(
                 "Welcome Back You've been missed",
                 style: TextStyle(fontSize: 16, color: Colors.grey),
@@ -74,24 +75,60 @@ class _LoginScreenState extends State<LoginScreen> {
                 builder:
                     (BuildContext context, AuthViewModel value, Widget? child) {
                   return GlobalZoomTapButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState!.validate()) {
                         UserModel userModel = UserModel(
                           id: DateTime.now().microsecond.toString(),
                           email: _emailController.text,
                           password: _passwordController.text,
-                          name: 'SignIn',
-
+                          name: '',
                         );
-
-                        context
+                        await context
                             .read<AuthViewModel>()
-                            .login(userModel: userModel);
+                            .login(email: _emailController.text, password: _passwordController.text);
+                        if (value.isCheckAuth) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (ctx) {
+                                return const TabBoxScreen();
+                              },
+                            ),
+                          );
+                        } else {
+                          showDialog(
+                            context: context,
+                            barrierDismissible: false,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: const Column(
+                                  children: [
+                                    Text('Xato'),
+                                    Text('Email yoki Password xato!'),
+                                  ],
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      context.read<AuthViewModel>().initialState();
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text('Ok'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }
                       }
                     },
-                    child: value.isLoading
+                    widget: value.isLoading
                         ? const CupertinoActivityIndicator()
-                        :  Text('Sign',style: AppTextStyle.semiBold.copyWith(color: Colors.white),),
+                        : Text(
+                      'Sign',
+                      style: AppTextStyle.semiBold
+                          .copyWith(color: Colors.white),
+                    ),
                   );
                 },
               ),
@@ -116,7 +153,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              20.boxH(),
               SizedBox(
                 width: 325.w,
                 height: 48.h,
@@ -164,7 +201,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              20.boxH(),
               GestureDetector(
                 onTap: () {
                   Navigator.push(
