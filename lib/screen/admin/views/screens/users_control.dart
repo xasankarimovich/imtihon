@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:imtihon/screen/messages/views/widgets/search_view_delegate.dart';
@@ -43,7 +44,7 @@ class _UsersControlState extends State<UsersControl> {
                 color: const Color.fromARGB(44, 160, 187, 244),
                 borderRadius: BorderRadius.circular(30)),
             child: ListTile(
-              title: const Text("Search User"),
+              title: Text(context.tr("searchUser")),
               trailing: SvgPicture.asset("assets/svg_icons/search.svg"),
             ),
           ),
@@ -63,12 +64,12 @@ class _UsersControlState extends State<UsersControl> {
             return Dismissible(
               background: Container(
                 color: const Color.fromARGB(255, 158, 195, 226),
-                child: const Center(
+                child: Center(
                   child: Padding(
-                    padding: EdgeInsets.only(left: 20.0),
+                    padding: const EdgeInsets.only(left: 20.0),
                     child: Row(
                       children: [
-                        Text("Edit"),
+                        Text(context.tr("edit")),
                       ],
                     ),
                   ),
@@ -84,7 +85,9 @@ class _UsersControlState extends State<UsersControl> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(isBlocked ? "Unblock" : "Block"),
+                        Text(isBlocked
+                            ? context.tr("unblock")
+                            : context.tr("block")),
                       ],
                     ),
                   ),
@@ -105,9 +108,9 @@ class _UsersControlState extends State<UsersControl> {
                           children: [
                             TextField(
                               controller: nameController,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                hintText: 'Name',
+                              decoration: InputDecoration(
+                                border: const OutlineInputBorder(),
+                                hintText: context.tr("name"),
                               ),
                             ),
                             const SizedBox(
@@ -115,9 +118,9 @@ class _UsersControlState extends State<UsersControl> {
                             ),
                             TextField(
                               controller: emailController,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                hintText: 'Email',
+                              decoration: InputDecoration(
+                                border: const OutlineInputBorder(),
+                                hintText: context.tr("email"),
                               ),
                             ),
                             const SizedBox(
@@ -125,9 +128,9 @@ class _UsersControlState extends State<UsersControl> {
                             ),
                             TextField(
                               controller: imageController,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                hintText: 'Image url',
+                              decoration: InputDecoration(
+                                border: const OutlineInputBorder(),
+                                hintText: context.tr("imageUrl"),
                               ),
                             ),
                           ],
@@ -137,13 +140,13 @@ class _UsersControlState extends State<UsersControl> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               TextButton(
-                                child: const Text('Close'),
+                                child: Text(context.tr("close")),
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
                               ),
                               FilledButton(
-                                child: const Text('Save'),
+                                child: Text(context.tr("save")),
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
@@ -178,13 +181,15 @@ class _UsersControlState extends State<UsersControl> {
                     ),
                     subtitle: const Text("Adress"),
                     trailing: isBlocked
-                        ? const Text(
-                            "Blocked",
-                            style: TextStyle(fontSize: 16, color: Colors.red),
+                        ? Text(
+                            context.tr("blocked"),
+                            style: const TextStyle(
+                                fontSize: 16, color: Colors.red),
                           )
-                        : const Text(
-                            "Free",
-                            style: TextStyle(fontSize: 16, color: Colors.blue),
+                        : Text(
+                            context.tr("free"),
+                            style: const TextStyle(
+                                fontSize: 16, color: Colors.blue),
                           ),
                   ),
                 ),
@@ -205,9 +210,9 @@ class _UsersControlState extends State<UsersControl> {
                   children: [
                     TextField(
                       controller: newNameController,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Name',
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
+                        hintText: context.tr("name"),
                       ),
                     ),
                     const SizedBox(
@@ -215,9 +220,9 @@ class _UsersControlState extends State<UsersControl> {
                     ),
                     TextField(
                       controller: newEmailController,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Email',
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
+                        hintText: context.tr("email"),
                       ),
                     ),
                     const SizedBox(
@@ -225,9 +230,9 @@ class _UsersControlState extends State<UsersControl> {
                     ),
                     TextField(
                       controller: newImageController,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Image url',
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
+                        hintText: context.tr("imageUrl"),
                       ),
                     ),
                   ],
@@ -237,13 +242,13 @@ class _UsersControlState extends State<UsersControl> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       TextButton(
-                        child: const Text('Close'),
+                        child: Text(context.tr("close")),
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
                       ),
                       FilledButton(
-                        child: const Text('Save'),
+                        child: Text(context.tr("save")),
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
@@ -255,7 +260,7 @@ class _UsersControlState extends State<UsersControl> {
             },
           );
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

@@ -23,6 +23,8 @@ dependencies:
   convex_bottom_bar: ^3.2.0
   flutter_svg: ^2.0.10+1
   lottie: ^3.1.2
+  easy_localization: ^3.0.7
+  adaptive_theme: ^3.6.0
 
 
 
@@ -43,6 +45,7 @@ flutter:
     - assets/images/
     - assets/svg_icons/
     - assets/animations/
+    - resources/langs/
 
 
 

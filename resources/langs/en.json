@@ -1,0 +1,18 @@
+{
+    "users":"Users",
+    "admin":"Admin",
+    "announcements":"Announcements",
+    "orders":"Orders",
+    "selectLanguage":"Select Language",
+    "searchUser":"Search User",
+    "edit":"Edit",
+    "block":"Block",
+    "unblock":"Unblock",
+    "blocked":"Blocked",
+    "free":"Free",
+    "name":"Name",
+    "email":"Email",
+    "imageUrl":"image Url",
+    "close":"Close",
+    "save":"Save"
+}
