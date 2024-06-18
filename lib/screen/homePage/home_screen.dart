@@ -10,8 +10,13 @@ import 'package:imtihon/screen/homePage/recomadation_screen.dart';
 import 'package:imtihon/screen/homePage/sedan_screen.dart';
 import 'package:imtihon/screen/homePage/turbo_screen.dart';
 import 'package:imtihon/screen/homePage/view_all.dart';
+import 'package:imtihon/screen/tab_box/tab_box_screen.dart';
 import 'package:imtihon/screen/widgets/custom_card.dart';
 import 'package:imtihon/screen/widgets/custom_card_with_row.dart';
+import 'package:imtihon/utils/color/app_color.dart';
+import 'package:imtihon/utils/extension/extension.dart';
+import 'package:imtihon/utils/image_path/images_path.dart';
+import 'package:imtihon/utils/style/app_text_style.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -56,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: _buildBottomNavigationBar(),
+      bottomNavigationBar: TabBoxScreen(),
     );
   }
 
@@ -95,8 +100,8 @@ class _HomeScreenState extends State<HomeScreen> {
           onPressed: () {},
           icon: Stack(
             children: [
-              const Icon(Icons.notifications_rounded,
-                  size: 40, color: Colors.blue),
+               Icon(Icons.notifications_rounded,
+                  size: 40.h, color: Colors.blue),
               Positioned(
                 top: 0,
                 right: 0,
@@ -126,10 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
       decoration: InputDecoration(
         hintText: "Search Your Idea...",
         suffixIcon: const Icon(CupertinoIcons.search),
-        hintStyle: const TextStyle(
-            color: Color(0xff8F95AB),
-            fontSize: 12,
-            fontWeight: FontWeight.w400),
+        hintStyle: AppTextStyle.regular.copyWith(color: AppColors.c8F95AB),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(color: Colors.grey),
@@ -146,11 +148,11 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Row(
         children: [
           _buildCategoryCard("Sedan", const SedanScreen()),
-          const SizedBox(width: 10),
+          10.boxH(),
           _buildCategoryCard("Hatchback", const HatchbackScreen()),
-          const SizedBox(width: 10),
+          10.boxH(),
           _buildCategoryCard("Classic", const ClassicCarScreen()),
-          const SizedBox(width: 10),
+          10.boxH(),
           _buildCategoryCard("Model", const ModelScreen()),
         ],
       ),
@@ -227,12 +229,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildTopCategoryHeader() {
     return TextButton(
       onPressed: () {},
-      child: const Text(
+      child: Text(
         "Top Category Car",
-        style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            color: Color(0xff000000)),
+        style: AppTextStyle.medium.copyWith(
+          color: AppColors.c8F95AB,
+        ),
       ),
     );
   }
@@ -244,15 +245,15 @@ class _HomeScreenState extends State<HomeScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           _buildTopCategoryCard(
-              "Classic", 'assets/svg_icons/classic.svg', const ClassicCarScreen()),
-          const SizedBox(width: 10),
+              "Classic", AppIconsSvg.classicIcon, const ClassicCarScreen()),
+          10.boxH(),
           _buildTopCategoryCard(
-              "Turbo", 'assets/svg_icons/turbo.svg', const TurboScreen()),
-          const SizedBox(width: 10),
-          _buildTopCategoryCard("F1", 'assets/svg_icons/f1.svg', const F1Screen()),
-          const SizedBox(width: 10),
+              "Turbo", AppIconsSvg.turboIcon, const TurboScreen()),
+          10.boxH(),
+          _buildTopCategoryCard("F1", AppIconsSvg.f1Icon, const F1Screen()),
+          10.boxH(),
           _buildTopCategoryCard(
-              "Gybrid", 'assets/svg_icons/gybrid.svg', const GybridScreen()),
+              "Gybrid", AppIconsSvg.gybridIcon, const GybridScreen()),
         ],
       ),
     );
@@ -265,8 +266,8 @@ class _HomeScreenState extends State<HomeScreen> {
             context, MaterialPageRoute(builder: (context) => screen));
       },
       child: Container(
-        width: 100,
-        height: 150,
+        width: 100.w,
+        height: 150.h,
         decoration: BoxDecoration(
           border: Border.all(color: Colors.grey),
           borderRadius: BorderRadius.circular(15),
@@ -275,32 +276,13 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(asset, width: 60, height: 60),
-            const SizedBox(height: 10),
+            10.boxH(),
             Text(
               label,
               style: const TextStyle(color: Color(0xffB5BBCF)),
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildBottomNavigationBar() {
-    return BottomAppBar(
-      shape: const CircularNotchedRectangle(),
-      notchMargin: 6.0,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _buildBottomNavigationIcon(Icons.home, Colors.blue, () {}),
-          _buildBottomNavigationIcon(Icons.message, Colors.black, () {}),
-          _buildBottomNavigationIcon(Icons.favorite, Colors.black, () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const FavoritesPage()));
-          }),
-          _buildBottomNavigationIcon(Icons.person, Colors.black, () {}),
-        ],
       ),
     );
   }

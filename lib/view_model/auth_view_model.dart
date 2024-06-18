@@ -9,23 +9,27 @@ class AuthViewModel extends ChangeNotifier {
 
   Future<void> register({required UserModel userModel}) async {
     isLoading = true;
-
     notifyListeners();
     await AuthHttpRepository().authenticate(userData: userModel);
     isLoading = false;
     notifyListeners();
   }
 
-  Future<void> login({required UserModel userData}) async {
+  Future<void> login({required String email, required String password}) async {
     isLoading = true;
     notifyListeners();
-    UserModel userModel =
-        UserModel.fromMap(getUserData() as Map<String, dynamic>);
-    if (userModel.email == userData.email &&
-        userModel.password == userData.password) {
+    final data = await AuthHttpRepository().getUserData();
+    debugPrint('___________________________________________ data ${data}');
+    if (data['email']== email &&
+        data['password'] == password) {
+      debugPrint('___________________________________________ data ifga kirdi');
+
       isCheckAuth = true;
       notifyListeners();
     }
+  }
+
+  void initialState(){
     isLoading = false;
     notifyListeners();
   }

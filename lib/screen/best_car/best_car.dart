@@ -3,7 +3,7 @@ import 'package:imtihon/utils/color/app_color.dart';
 import 'package:imtihon/utils/extension/extension.dart';
 import 'package:imtihon/utils/style/app_text_style.dart';
 
-import '../auth/email/email_screen.dart';
+import '../auth/email/get_started_screen.dart';
 import 'best_car_splash.dart';
 
 class BestCar extends StatelessWidget {

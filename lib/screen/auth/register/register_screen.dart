@@ -7,6 +7,7 @@ import 'package:imtihon/utils/constants/app_constants.dart';
 import 'package:imtihon/utils/extension/extension.dart';
 import 'package:imtihon/utils/style/app_text_style.dart';
 
+import '../../../utils/color/app_color.dart';
 import '../../../utils/image_path/images_path.dart';
 
 class RegisterScreen extends StatefulWidget {

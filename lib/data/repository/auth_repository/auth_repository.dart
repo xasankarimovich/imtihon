@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:imtihon/data/model/user/user_model.dart';
 
@@ -35,35 +36,22 @@ class AuthHttpRepository {
       return data;
     } catch (e) {
       print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
-      print('Exception: $e');
+
 
       rethrow;
     }
   }
-}
-
-Future<Map<String, dynamic>> getUserData() async {
-  final response = await http.get(
-      Uri.parse('https://imtihon-24fde-default-rtdb.firebaseio.com/User.json'));
-
-  if (response.statusCode == 200) {
-    final data = jsonDecode(response.body);
-    print('${data['user_id']}');
-    return data['user_id'];
-    // return json.decode(response.body);
-  } else {
-    throw Exception('Failed to load user data');
+  Future<Map<String, dynamic>> getUserData() async {
+    final response = await http.get(
+        Uri.parse('https://imtihon-24fde-default-rtdb.firebaseio.com/User.json'));
+    print('malumot chaqirilmoqda');
+    if (response.statusCode == 200) {
+      print('malumot keldi');
+      final data = jsonDecode(response.body);
+      debugPrint("repository data _________________________________________ ${data}");
+      return data;
+    } else {
+      throw Exception('Failed to load user data');
+    }
   }
 }

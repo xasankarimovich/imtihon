@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:imtihon/screen/auth/login/login_screen.dart';
 import 'package:imtihon/utils/color/app_color.dart';
 import 'package:imtihon/utils/extension/extension.dart';
 import 'package:imtihon/utils/image_path/images_path.dart';
 import 'package:imtihon/utils/style/app_text_style.dart';
 
-import '../login/sign_up/sign_up.dart';
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({super.key});
@@ -33,7 +33,7 @@ class GetStartedScreen extends StatelessWidget {
 
                 onPressed: () {
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx){
-                    return SignUp();
+                    return LoginScreen();
                   },),);
                 },
 
